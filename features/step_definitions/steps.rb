@@ -1,6 +1,6 @@
 Given(/^an empty bookshelf$/) do
   create_bookshelf
-# expect( @bookshelf.book_count ).to eq 0
+ expect( @bookshelf.book_count ).to eq 0
 end
 
 When(/^I search for a book$/) do
@@ -19,25 +19,3 @@ When(/^I search for a non existent book$/) do
   pending
 end
 
-def create_bookshelf
-  @bookshelf = Bookshelf.new
-end
-
-def search_titles( search_string )
-  @search_results = @bookshelf.search_titles( search_string )
-end
-
-def search_results
-  @search_results
-end
-
-class Bookshelf
-
-  def book_count
-    0
-  end
-
-  def search_titles( search_string )
-    []
-  end
-end
