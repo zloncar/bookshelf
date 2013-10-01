@@ -25,7 +25,7 @@ module TestDriver
     end
 
     def search_titles( search_string )
-      @books.find_all { |x| x.eql? search_string }
+      @books.find_all { |book| book.include? search_string }
     end
   end
 

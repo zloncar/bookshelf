@@ -8,7 +8,7 @@ end
 
 Given(/^a bookshelf with one book$/) do
   create_bookshelf
-  add_book("Ruby")
+  add_book("Ruby Programming")
 end
 
 When(/^I search for a non existent book$/) do
@@ -20,13 +20,13 @@ When(/^I search for a book$/) do
 end
 
 Then(/^shows the book$/) do
-  expect( search_results ).to eq ["Ruby"]
+  expect( search_results ).to eq ["Ruby Programming"]
 end
 
 Given(/^a bookshelf with a few books$/) do
   create_bookshelf
-  add_book("Ruby")
-  add_book("Perl")
-  add_book("Java")
-  add_book("C#")
+  add_book("Ruby Programming")
+  add_book("Perl Programming")
+  add_book("Java Programming")
+  add_book("C# Programming")
 end
