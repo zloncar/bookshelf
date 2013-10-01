@@ -9,7 +9,8 @@ class Library
   end
 
   def search_by_title(title)
-     @books.find_all { |n| n == title }
+  	raise ArgumentError if title.to_s.strip.length < 1
+     @books.find_all { |n| n == title}
   end
 
 end
