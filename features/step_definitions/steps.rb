@@ -1,13 +1,14 @@
 Given(/^an empty bookshelf$/) do
-  pending # express the regexp above with the code you wish you had
+  create_bookshelf
+# expect( @bookshelf.book_count ).to eq 0
 end
 
 When(/^I search for a book$/) do
-  pending # express the regexp above with the code you wish you had
+  search_titles( 'Banana' )
 end
 
 Then(/^shows no results found$/) do
-  pending # express the regexp above with the code you wish you had
+  expect( search_results ).to be_empty
 end
 
 Given(/^a bookshelf with one book$/) do
@@ -15,6 +16,28 @@ Given(/^a bookshelf with one book$/) do
 end
 
 When(/^I search for a non existent book$/) do
-  expect ( result ).to be 0
+  pending
 end
 
+def create_bookshelf
+  @bookshelf = Bookshelf.new
+end
+
+def search_titles( search_string )
+  @search_results = @bookshelf.search_titles( search_string )
+end
+
+def search_results
+  @search_results
+end
+
+class Bookshelf
+
+  def book_count
+    0
+  end
+
+  def search_titles( search_string )
+    []
+  end
+end
