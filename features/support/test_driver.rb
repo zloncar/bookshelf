@@ -15,10 +15,6 @@ module TestDriver
 
   class Bookshelf
 
-    def book_count
-      0
-    end
-
     def search_titles( search_string )
       []
     end
