@@ -5,10 +5,12 @@ Feature: Search by title
 
 Scenario: Search for non existant book
 	Given the library is empty
-	When I search for title 'Banana'
+	When I search for title 'Monkey'
 	Then I get no results
 
 Scenario: Search for non existant book
-	Given the library contains 1 book called 'Cucumber'
-	When I search for title 'Banana'
+	Given the library contains a book called 'Cucumber'
+	And the library contains a book called 'Gibbon'
+	And the library contains a book called 'Green'
+	When I search for title 'Monkey'
 	Then I get no results
