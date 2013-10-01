@@ -12,3 +12,9 @@ Feature: Find a book by title
     Given a bookshelf with one book
     When I search for a non existent book
     Then shows no results found
+
+  Scenario: Found book on bookshelf
+    Given a bookshelf with one book
+    When I search for a book
+    Then shows the book
+
