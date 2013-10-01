@@ -5,7 +5,7 @@ Feature: Search by title
 
 Scenario: Search for non existant book
 	Given the library is empty
-	When I search for a title 'Banana'
+	When I search for title 'Banana'
 	Then I get no results
 
 Scenario: Search for non existant book
