@@ -24,10 +24,6 @@ module TestDriver
       @books = []
     end
 
-    def book_count
-      0
-    end
-
     def search_titles( search_string )
       @books.find_all { |x| x.eql? search_string }
     end

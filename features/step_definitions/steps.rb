@@ -1,6 +1,5 @@
 Given(/^an empty bookshelf$/) do
   create_bookshelf
-# expect( @bookshelf.book_count ).to eq 0
 end
 
 When(/^I search for a book$/) do
