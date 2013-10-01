@@ -18,3 +18,8 @@ Feature: Find a book by title
     When I search for a book
     Then shows the book
 
+  Scenario: Found book on bigger bookshelf
+    Given a bookshelf with a few books
+    When I search for a book
+    Then shows the book
+

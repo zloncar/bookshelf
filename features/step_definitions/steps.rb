@@ -22,3 +22,11 @@ end
 Then(/^shows the book$/) do
   expect( search_results ).to eq ["Ruby"]
 end
+
+Given(/^a bookshelf with a few books$/) do
+  create_bookshelf
+  add_book("Ruby")
+  add_book("Perl")
+  add_book("Java")
+  add_book("C#")
+end
