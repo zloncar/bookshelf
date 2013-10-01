@@ -12,15 +12,24 @@ module TestDriver
     @search_results
   end
 
+  def add_book(book)
+    @bookshelf.books << book
+  end
 
   class Bookshelf
+
+    attr_accessor :books
+
+    def initialize
+      @books = []
+    end
 
     def book_count
       0
     end
 
     def search_titles( search_string )
-      []
+      @books.find_all { |x| x.eql? search_string }
     end
   end
 

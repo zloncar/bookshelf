@@ -12,25 +12,11 @@ Then(/^shows no results found$/) do
 end
 
 Given(/^a bookshelf with one book$/) do
+  create_bookshelf
   add_book("Ruby")
 end
 
 When(/^I search for a non existent book$/) do
-  @result = bookshelf.search("ABC")
+  search_titles( 'ABC' )
 end
 
-Then(/^shows no results found$/) do
-  expect(@result).to be_empty
-end
-
-module UIDriver
-  
-  def bookshelf
-    @bookshelf ||= Bookshelf.new
-  end
-
-  def add_book(book)
-    bookshelf.books << book
-  end
-end
-World(UIDriver)
