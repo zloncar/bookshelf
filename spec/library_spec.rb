@@ -2,7 +2,8 @@ require 'library'
 
 describe "Library" do 
   subject { Library.new }
-  it 'should add book' do
+
+  it 'should find a book if the search matches a book in the library' do
     mysearch = "Grape"
     subject.add_book( mysearch )
     result = subject.search_by_title( mysearch )
@@ -22,5 +23,15 @@ describe "Library" do
   it 'should error when searching with nil' do
     expect{subject.search_by_title(nil)}.to raise_error(ArgumentError)
   end
+
+  it 'should find a book with a partial match' do
+    subject.add_book( 'Sociology' )
+    subject.add_book( 'Psychology' )
+    subject.add_book( 'History' )
+    mysearch = "ology"
+    expect(subject.search_by_title(mysearch)).to eq(['Sociology','Psychology'])
+  end
+
+  it 'should find multiple books if partial match for all'
 
 end
