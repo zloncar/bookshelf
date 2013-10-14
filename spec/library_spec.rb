@@ -24,14 +24,11 @@ describe "Library" do
     expect{subject.search_by_title(nil)}.to raise_error(ArgumentError)
   end
 
-  it 'should find a book with a partial match' do
+  it 'should find books with a partial match' do
     subject.add_book( 'Sociology' )
     subject.add_book( 'Psychology' )
     subject.add_book( 'History' )
     mysearch = "ology"
     expect(subject.search_by_title(mysearch)).to eq(['Sociology','Psychology'])
   end
-
-  it 'should find multiple books if partial match for all'
-
 end
