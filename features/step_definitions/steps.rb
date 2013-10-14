@@ -1,19 +1,29 @@
-Given(/^the library is empty$/) do
+Given(/^an empty bookshelf$/) do
 end
 
-When(/^I search for title '(\w+)'$/) do |search|
-  search_by_title search
+Then(/^shows no results found$/) do
+  expect( search_results ).to be_empty
 end
 
-Then(/^I get no results$/) do
-  expect(search_results).to eq([])
+Given(/^a bookshelf with one book$/) do
+  add_book "Ruby Programming"
 end
 
-Then(/^I get (\d+) results$/) do |count|
-  expect(search_results.count).to eq(count.to_i)
+When(/^I search for a non existent book$/) do
+  search_by_title 'Banana'
 end
 
-Given(/^the library contains a book called '(\w+)'$/) do |title|
-  add_book title
+When(/^I search for a book$/) do
+  search_by_title 'Ruby'
 end
 
+Then(/^shows the book$/) do
+  expect( search_results ).to eq ["Ruby Programming"]
+end
+
+Given(/^a bookshelf with a few books$/) do
+  add_book "Ruby Programming"
+  add_book "Java Programming"
+  add_book "Perl Programming"
+  add_book "C# Programming"
+end
