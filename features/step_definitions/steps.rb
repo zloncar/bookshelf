@@ -1,4 +1,5 @@
 Given(/^an empty bookshelf$/) do
+  clear_books
 end
 
 Then(/^shows no results found$/) do
@@ -6,6 +7,7 @@ Then(/^shows no results found$/) do
 end
 
 Given(/^a bookshelf with one book$/) do
+  clear_books
   add_book "Ruby Programming"
 end
 
@@ -22,6 +24,7 @@ Then(/^shows the book$/) do
 end
 
 Given(/^a bookshelf with a few books$/) do
+  clear_books
   add_book "Ruby Programming"
   add_book "Java Programming"
   add_book "Perl Programming"
