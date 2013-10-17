@@ -29,16 +29,7 @@ configure do
 end
 
 get '/' do
-  %!<html>
-    <head></head>
-    <body>
-      <p>Welcome to BookShelf</p>
-      <form method="GET" action="/search_by_title">
-        <input type="text" name="query" />
-        <input type="submit" value="Search" />
-      </form>
-    </body>
-    </html>!
+  erb :index
 end
 
 get '/search_by_title' do
