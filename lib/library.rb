@@ -1,4 +1,5 @@
 class Library
+  attr_reader :books
   def initialize
     @books = []
   end
@@ -16,7 +17,6 @@ end
 require 'sinatra'
 configure do 
   library = Library.new
-  library.add_book "Hello, world!"
   set :library, library
 end
 
@@ -27,4 +27,13 @@ end
 get '/search' do
   @results = settings.library.search_by_title(params[:query])
   erb :search
+end
+
+get '/add' do
+  erb :add
+end
+
+post '/add' do
+  settings.library.add_book params[:title]
+  redirect '/'
 end

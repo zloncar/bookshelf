@@ -34,8 +34,10 @@ module WebUIDriver
   end
 
   def add_book(book)
-    library.add_book book
     Capybara.app.set :library, library
+    visit '/add'
+    fill_in 'title', with: book
+    click_button 'Save'
   end
   
   def search_results
