@@ -46,8 +46,10 @@ module WebUIDriver
 end
 
 if ENV['DOMAIN']
+  puts "Mode: Domain"
   World(DomainDriver)
 else
+  puts "Mode: Web"
   require 'capybara/cucumber'
 
   Capybara.app = Sinatra::Application
