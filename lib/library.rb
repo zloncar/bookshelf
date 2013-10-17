@@ -20,6 +20,8 @@ class Library
 end
 
 require 'sinatra'
+require 'sinatra/reloader'
+
 configure do
   library = Library.new
   library.add_book('Ruby Programming')
@@ -27,6 +29,8 @@ configure do
 
   set :library, library
 end
+
+register Sinatra::Reloader
 
 get '/' do
   erb :index
