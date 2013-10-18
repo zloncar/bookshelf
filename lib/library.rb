@@ -42,9 +42,13 @@ get '/' do
 end
 
 get '/search_by_title' do
-  @results = settings.library.search_by_title( params[:query] )
-  @query = params[:query]
-  erb :search_results
+  begin
+    @results = settings.library.search_by_title( params[:query] )
+    @query = params[:query]
+    erb :search_results
+  rescue
+    redirect '/'
+  end
 end
 
 get '/add_book' do
