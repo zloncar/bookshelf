@@ -41,8 +41,10 @@ module WebUIDriver
     click_button 'Search'
   end
 
-  def add_book(book)
-    library.add_book book
+  def add_book(title)
+    visit '/add_book'
+    fill_in 'title', with: title
+    click_button 'Add'
   end
 
   def search_results

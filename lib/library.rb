@@ -47,3 +47,6 @@ get '/search_by_title' do
   erb :search_results
 end
 
+get '/add_book' do
+  erb :add_book
+end
