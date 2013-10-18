@@ -17,6 +17,10 @@ class Library
     @books.find_all { |n| n.match(/#{title}/i) }
   end
 
+  def book_count
+    @books.size
+  end
+
 end
 
 require 'sinatra'
@@ -33,6 +37,7 @@ end
 register Sinatra::Reloader
 
 get '/' do
+  @book_count = settings.library.book_count
   erb :index
 end
 

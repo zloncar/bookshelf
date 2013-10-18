@@ -2,7 +2,8 @@
   <head>
   </head>
   <body>
-    <p>Welcome to OTB BookShelf</p>
+    <h4>Welcome to OTB BookShelf</h4>
+    <p>Currently there are <%= @book_count %> books available.</p>
     <form method="GET" action="/search_by_title">
       <input type="text" name="query" />
       <input type="submit" value="Search" />
