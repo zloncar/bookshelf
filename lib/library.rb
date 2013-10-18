@@ -42,11 +42,15 @@ get '/' do
 end
 
 get '/search_by_title' do
-  @results = settings.library.search_by_title( params["query"] )
+  @results = settings.library.search_by_title( params[:query] )
 
   erb :search_results
 end
 
 get '/add_book' do
   erb :add_book
+end
+
+post '/add_book' do
+  settings.library.add_book params[:title]
 end
