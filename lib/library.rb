@@ -53,4 +53,6 @@ end
 
 post '/add_book' do
   settings.library.add_book params[:title]
+  @added_title = params[:title]
+  erb :add_book
 end
