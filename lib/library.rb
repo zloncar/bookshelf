@@ -23,12 +23,18 @@ configure do
   set :library, library
 end
 
+helpers do
+  def library
+    settings.library
+  end
+end
+
 get '/' do
   erb :index
 end
 
 get '/search' do
-  @results = settings.library.search_by_title(params[:query])
+  @results = library.search_by_title(params[:query])
   erb :search
 end
 
@@ -37,6 +43,6 @@ get '/add' do
 end
 
 post '/add' do
-  settings.library.add_book params[:title]
+  library.add_book params[:title]
   redirect '/'
 end
