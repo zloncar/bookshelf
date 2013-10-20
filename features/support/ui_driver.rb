@@ -10,7 +10,7 @@ module DomainDriver
     @search_results = library.search_by_title title
   end
 
-  def search_results 
+  def search_results
     @search_results
   end
 
@@ -39,9 +39,9 @@ module WebUIDriver
     fill_in 'title', with: book
     click_button 'Save'
   end
-  
+
   def search_results
-    all('.result').map(&:text)
+    all('.result').map { |result| Library::Book.new(result.text) }
   end
 end
 

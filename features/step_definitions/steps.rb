@@ -22,7 +22,7 @@ When(/^I search for a book using lowercase$/) do
 end
 
 Then(/^shows the book$/) do
-  expect( search_results ).to eq ["Ruby Programming"]
+  expect( search_results ).to eq [Library::Book.new("Ruby Programming")]
 end
 
 Given(/^a bookshelf with a few books$/) do
