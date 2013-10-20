@@ -5,12 +5,15 @@ class Library
   end
 
   def add_book(title)
-    @books << title
+    @books << Book.new(title)
   end
 
   def search_by_title(title)
     raise ArgumentError if title.to_s.strip.length < 1
-    @books.find_all { |n| n if n.downcase.match title.downcase }
+    @books.find_all { |n| n if n.title.downcase.match title.downcase }.map(&:title)
+  end
+
+  class Book < Struct.new(:title)
   end
 end
 
