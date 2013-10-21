@@ -8,9 +8,10 @@ class Library
     @books << Book.new(title)
   end
 
-  def search_by_title(title)
-    raise ArgumentError if title.to_s.strip.length < 1
-    @books.find_all { |n| n if n.title.downcase.match title.downcase }
+  def search_by_title(title, ui)
+    raise ArgumentError, "invalid search" if title.to_s.strip.length < 1
+    results = @books.find_all { |n| n if n.title.downcase.match title.downcase }
+    ui.display_search_results(results)
   end
 
   class Book < Struct.new(:title)
@@ -27,6 +28,10 @@ helpers do
   def library
     settings.library
   end
+
+  def display_search_results(results)
+    @results = results
+  end
 end
 
 get '/' do
@@ -34,7 +39,7 @@ get '/' do
 end
 
 get '/search' do
-  @results = library.search_by_title(params[:query])
+  @results = library.search_by_title(params[:query], self)
   erb :search
 end
 
