@@ -1,20 +1,27 @@
 class Library
   attr_reader :books
   def initialize
-    @books = []
+    @books = Bookshelf.new
   end
 
   def add_book(title)
-    @books << Book.new(title)
+    @books.add Book.new(title)
   end
 
   def search_by_title(title, ui)
-    raise ArgumentError, "invalid search" if title.to_s.strip.length < 1
-    results = @books.find_all { |n| n if n.title.downcase.match title.downcase }
+    results = @books.search_by_title(title)
     ui.display_search_results(results)
   end
 
   class Book < Struct.new(:title)
+  end
+
+  require_relative 'library/bookshelf.rb'
+end
+
+class SearchResultsPage < Struct.new(:controller)
+  def display_search_results(results)
+    controller.erb :search, locals: { results: results }
   end
 end
 
@@ -29,9 +36,9 @@ helpers do
     settings.library
   end
 
-  def display_search_results(results)
-    @results = results
-  end
+# def display_search_results(results)
+#   @results = results
+# end
 end
 
 get '/' do
@@ -39,8 +46,7 @@ get '/' do
 end
 
 get '/search' do
-  @results = library.search_by_title(params[:query], self)
-  erb :search
+  library.search_by_title(params[:query], SearchResultsPage.new(self))
 end
 
 get '/add' do
